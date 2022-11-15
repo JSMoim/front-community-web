@@ -5,6 +5,8 @@ import "@/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "@/pages/MainPage";
 import AboutPage from "@/pages/AboutPage";
+import QnaPage from "@/pages/QnaPage";
+import CommunityPage from "@/pages/CommunityPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,8 +35,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/qna" element={<AboutPage />} />
-          <Route path="/community" element={<AboutPage />} />
+          <Route path="/qna" element={<QnaPage />} />
+          <Route path="/community" element={<CommunityPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </BrowserRouter>
