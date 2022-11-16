@@ -21,38 +21,39 @@ function App() {
 
   return (
     <div>
-      <Box sx={{ Width: 100, height: 100, bgcolor: "background.paper" }}>
-        <Stack
-          direction="row"
-          justifyContent={"flex-start"}
-          alignItems={"flex-start"}
-          spacing={4}
-        >
-          <div className="MainIcon">
-            <a className="active" href="/">
-              <img
-                src="src/assets/unnamed.png"
-                width={"40px"}
-                height={"40px"}
-              />
-            </a>
-          </div>
-          <ThemeProvider theme={DefaultTheme}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label="Q&A" to="/qna" component={Link} />
-              <Tab label="커뮤니티" to="/community" component={Link} />
-              <Tab label="공지사항" to="/notice" component={Link} />
-            </Tabs>
-          </ThemeProvider>
-        </Stack>
-      </Box>
       <BrowserRouter>
+        <Box sx={{ Width: 100, height: 100, bgcolor: "background.paper" }}>
+          <Stack
+            direction="row"
+            justifyContent={"flex-start"}
+            alignItems={"flex-start"}
+            spacing={4}
+          >
+            <div className="MainIcon">
+              <a className="active" href="/">
+                <img
+                  src="src/assets/unnamed.png"
+                  width={"40px"}
+                  height={"40px"}
+                />
+              </a>
+            </div>
+            <ThemeProvider theme={DefaultTheme}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="Q&A" to="/qna" component={Link} />
+                <Tab label="커뮤니티" to="/community" component={Link} />
+                <Tab label="공지사항" to="/notice" component={Link} />
+              </Tabs>
+            </ThemeProvider>
+          </Stack>
+        </Box>
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/qna" element={<QnaPage />} />
