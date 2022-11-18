@@ -7,7 +7,7 @@ export const DefaultTheme = createTheme({
       main: blueGrey[800],
     },
     secondary: {
-      main: "#ffffff",
+      main: "#000000",
     },
   },
   components: {
