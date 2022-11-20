@@ -25,6 +25,7 @@ import {
   Typography,
   Chip,
   Link as MuiLink,
+  Avatar,
 } from "@mui/material";
 import React from "react";
 import { DefaultTheme } from "./themes/DefaultThemes";
@@ -94,13 +95,24 @@ function App() {
                   <Tab label="공지사항" to="/notice" component={Link} />
                 </Tabs>
               </Stack>
-
-              <Button
-                sx={{ paddingLeft: "16px", paddingRight: "16px" }}
-                onClick={handleClickOpen}
+              <Stack
+                direction="row"
+                sx={{
+                  justifyItems: "center",
+                  justifyContents: "center",
+                  alignItems: "center",
+                }}
               >
-                Login
-              </Button>
+                <Button
+                  sx={{ paddingLeft: "16px", paddingRight: "16px" }}
+                  onClick={handleClickOpen}
+                >
+                  로그인
+                </Button>
+
+                <Avatar src="assets/unnamed.png" />
+              </Stack>
+
               <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                   <Stack
