@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "@/assets/react.svg";
-import githubLogo from "@/assets/github.svg";
 import "@/App.css";
 import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import MainPage from "@/pages/MainPage";
@@ -35,6 +32,7 @@ import { width } from "@mui/system";
 import GithubIcon from "./assets/GithubIcon";
 import GoogleIcon from "./assets/GoogleIcon";
 import AltTextField from "./component/AltTextField";
+import { PaddingOutlined } from "@mui/icons-material";
 
 function App() {
   const [value, setValue] = React.useState(0);
