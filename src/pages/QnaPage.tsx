@@ -56,7 +56,11 @@ function createBoard(subCategory: String) {
             padding: "20px",
           }}
         >
-          <Card>
+          <Card
+            onClick={() => {
+              console.log("hi");
+            }}
+          >
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="black">
                 {subCategory}
