@@ -17,6 +17,8 @@ import React from "react";
 import ImageIcon from "@mui/icons-material/Image";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import AdUnitsIcon from "@mui/icons-material/AdUnits";
+import { TabContext, TabPanel } from "@mui/lab";
+import { TabList } from "@mui/lab";
 
 export type BoardProps = {
   title: string;
@@ -24,7 +26,27 @@ export type BoardProps = {
   avatar: string;
 };
 
-function createBoard() {
+let boards: BoardProps[] = [
+  {
+    title: "게시글 1",
+    contents: "내용 1",
+    avatar: "😀",
+  },
+
+  {
+    title: "게시글 2",
+    contents: "내용 2",
+    avatar: "😀",
+  },
+
+  {
+    title: "게시글 3",
+    contents: "내용 3",
+    avatar: "😀",
+  },
+];
+
+function createBoard(subCategory: String) {
   let returnElements: JSX.Element[] = [];
   for (let i = 0; i < 6; i++) {
     returnElements.push(
@@ -37,7 +59,7 @@ function createBoard() {
           <Card>
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="black">
-                HOME
+                {subCategory}
               </Typography>
               <List>
                 {boards.map((v, i) => {
@@ -60,58 +82,58 @@ function createBoard() {
 }
 
 function QnaPage() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState("tech");
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
-  let boards: BoardProps[] = [
-    {
-      title: "게시글 1",
-      contents: "내용 1",
-      avatar: "😀",
-    },
-
-    {
-      title: "게시글 2",
-      contents: "내용 2",
-      avatar: "😀",
-    },
-
-    {
-      title: "게시글 3",
-      contents: "내용 3",
-      avatar: "😀",
-    },
-  ];
-
+  let subCategories: Map<string, string> = new Map([
+    ["tech", "Tech"],
+    ["career", "Career"],
+    ["etc", "ETC"],
+    ["all", "All"],
+  ]);
   return (
-    <><Box
-      sx={{
-        bgcolor: "background.paper",
-        display: "flex",
-      }}
-    >
-      <Stack
-        direction="row"
-        justifyContent={"center"}
-        alignItems={"center"}
-        spacing={2}
-        sx={{ flexGrow: 1, overflow: "hidden" }}
-      >
-        
-        <Tabs value={value} onChange={handleChange} centered sx={{}}>
-          <Tab label="기술" value="tech" />
+    <div>
+      <TabContext value={value}>
+        <Box
+          sx={{
+            bgcolor: "background.paper",
+            display: "flex",
+          }}
+        >
+          <Stack
+            direction="row"
+            justifyContent={"center"}
+            alignItems={"center"}
+            spacing={2}
+            sx={{ flexGrow: 1, overflow: "hidden" }}
+          >
+            <TabList value={value} onChange={handleChange}>
+              <Tab label="기술" value={"tech"} />
 
-          <Tab label="커리어" />
-          <Tab label="기타" />
-          <Tab label="전체" />
-        </Tabs>
-   
-      </Stack>
-     
-    </Box>
+              <Tab label="커리어" value={"career"} />
+              <Tab label="기타" value={"etc"} />
+              <Tab label="전체" value={"all"} />
+            </TabList>
+          </Stack>
+        </Box>
+        {Array.from(subCategories).map((e) => {
+          return (
+            <TabPanel value={e[0]}>
+              <Grid
+                container
+                direction={"row"}
+                justifyContent="center"
+                alignItems="center"
+              >
+                {createBoard(e[1])}
+              </Grid>
+            </TabPanel>
+          );
+        })}
+      </TabContext>
+    </div>
   );
 }
 
