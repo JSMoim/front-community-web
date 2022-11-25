@@ -4,6 +4,7 @@ import MainPage from "@/pages/MainPage";
 import NoticePage from "@/pages/NoticePage";
 import QnaPage from "@/pages/QnaPage";
 import CommunityPage from "@/pages/CommunityPage";
+import RecruitPage from "@/pages/RecruitPage";
 import { ThemeProvider } from "@emotion/react";
 import {
   Box,
@@ -91,6 +92,7 @@ function App() {
                   <Tab label="Q&A" to="/qna" component={Link} />
                   <Tab label="커뮤니티" to="/community" component={Link} />
                   <Tab label="공지사항" to="/notice" component={Link} />
+                  <Tab label="프로젝트&스터디" to="/recruit" component={Link} />
                 </Tabs>
               </Stack>
               <Stack
@@ -246,6 +248,7 @@ function App() {
               <Route path="/qna" element={<QnaPage />} />
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/notice" element={<NoticePage />} />
+              <Route path="/recruit" element={<RecruitPage />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

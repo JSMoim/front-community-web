@@ -20,7 +20,6 @@ import AdUnitsIcon from "@mui/icons-material/AdUnits";
 import { TabContext, TabPanel } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import LanguageChips from "@/component/chips/LanguageChips";
-import AvatarSvg from "assets/iconsvg/GiyHub.svg";
 
 export type BoardProps = {
   title: string;
@@ -87,42 +86,42 @@ function createBoard(subCategory: String) {
   return returnElements;
 }
 
-function QnaPage() {
-  const [value, setValue] = React.useState("tech");
+function RecruitPage() {
+  const [value, setValue] = React.useState("project");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   let subCategories: Map<string, string> = new Map([
-    ["tech", "Tech"],
-    ["career", "Career"],
-    ["etc", "ETC"],
-    ["all", "All"],
+    ["project", "Project"],
+    ["study", "Study"],
   ]);
   return (
     <div>
       <TabContext value={value}>
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            display: "flex",
-          }}
-        >
-          <Stack
-            direction="row"
-            justifyContent={"center"}
-            alignItems={"center"}
-            spacing={2}
-            sx={{ flexGrow: 1, overflow: "hidden" }}
+        <div style={{marginBottom:"10px"}}>
+          <Box
+            sx={{
+              bgcolor: "background.paper",
+              display: "flex",
+            }}
           >
-            <TabList value={value} onChange={handleChange}>
-              <Tab label="기술" value={"tech"} />
-              <Tab label="커리어" value={"career"} />
-              <Tab label="기타" value={"etc"} />
-              <Tab label="전체" value={"all"} />
-            </TabList>
-          </Stack>
-        </Box>
+            <Stack
+              direction="row"
+              justifyContent={"center"}
+              alignItems={"center"}
+              spacing={2}
+              sx={{ flexGrow: 1, overflow: "hidden" }}
+            >
+              <TabList value={value} onChange={handleChange}>
+                <Tab label="프로젝트" value={"project"} />
+                <Tab label="스터디" value={"study"} />
+              </TabList>
+            </Stack>
+          </Box>
+          </div>
+          {<LanguageChips label={"javascript"} languagetype={"javascript"} />}
+        
         {Array.from(subCategories).map((e) => {
           return (
             <TabPanel value={e[0]}>
@@ -133,7 +132,6 @@ function QnaPage() {
                 alignItems="center"
               >
                 {createBoard(e[1])}
-                {<LanguageChips label={"GitHub"} languagetype={"javascript"} />}
               </Grid>
             </TabPanel>
           );
@@ -143,4 +141,4 @@ function QnaPage() {
   );
 }
 
-export default QnaPage;
+export default RecruitPage;

@@ -1,23 +1,67 @@
-import { Chip, Avatar } from '@mui/material'
-import React from 'react'
+import { Style } from "@mui/icons-material";
+import { Chip, Avatar, createSvgIcon, SvgIcon } from "@mui/material";
+import { width } from "@mui/system";
+import React from "react";
 
 export type LanguageChipsProps = {
   label: string;
-  logo: string;
-  languagetype: "NodeJs" | "VanillaJs" | "GitHub";
+  languagetype:
+    | "graphql"
+    | "kotlin"
+    | "mysql"
+    | "mongodb"
+    | "php"
+    | "firebase"
+    | "swift"
+    | "unity"
+    | "git"
+    | "jest"
+    | "javascript"
+    | "typescript"
+    | "react"
+    | "vue"
+    | "svelte"
+    | "nextjs"
+    | "nodejs"
+    | "java"
+    | "spring"
+    | "go"
+    | "nestjs"
+    | "express"
+    | "django"
+    | "figma"
+    | "zeplin"
+    | "aws"
+    | "docker"
+    | "kubernetes"
+    | "flutter"
+    | "reactnative"
+    | "c"
+    | "c++"
+    | "c#"
+    | "python";
 };
 
-function LanguageChips(props: LanguageChipsProps)  {
+function LanguageChips(props: LanguageChipsProps) {
+  const handleClick = () => {
+    console.info("you clicked tho Chip.");
+  };
 
   return (
-    
-    <Chip 
-    
-    avatar ={<Avatar src={props.logo}/>}
-    label={props.label} 
-    size="medium" />
-
-  )
+    <div>
+      <Chip   
+        sx={{ fontSize: "20px", height: ""  }}
+        icon={ 
+          <img style={{objectFit:"contain",margin:"10px"}}
+          src={"/src/assets/iconsvg/" + props.languagetype + ".svg"} />
+        }
+        label={props.label}
+        variant="outlined"
+        onClick={handleClick}
+        size="medium"
+      />
+    </div>
+  );
 }
 
-export default LanguageChips  
+export default LanguageChips;
