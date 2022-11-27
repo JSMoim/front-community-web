@@ -20,6 +20,7 @@ import AdUnitsIcon from "@mui/icons-material/AdUnits";
 import { TabContext, TabPanel } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import LanguageChips from "@/component/chips/LanguageChips";
+import LocateChips from "@/component/chips/LocateChips";
 
 export type BoardProps = {
   title: string;
@@ -99,7 +100,7 @@ function RecruitPage() {
   return (
     <div>
       <TabContext value={value}>
-        <div style={{marginBottom:"10px"}}>
+        <div style={{ marginBottom: "10px" }}>
           <Box
             sx={{
               bgcolor: "background.paper",
@@ -119,9 +120,51 @@ function RecruitPage() {
               </TabList>
             </Stack>
           </Box>
-          </div>
-          {<LanguageChips label={"javascript"} languagetype={"javascript"} />}
-        
+        </div>
+        <Stack
+          direction="row"
+          justifyContent={"center"}
+          flexWrap={"wrap"}
+          alignItems={"flex-start"}
+          marginBottom={"40px"}
+          gap="10px"
+          spacing={2}
+        >
+          {<LanguageChips label={"AWS"} languagetype={"aws"} />}
+          {<LanguageChips label={"C"} languagetype={"c"} />}
+          {<LanguageChips label={"Django"} languagetype={"django"} />}
+          {<LanguageChips label={"Docker"} languagetype={"docker"} />}
+          {<LanguageChips label={"Express"} languagetype={"express"} />}
+          {<LanguageChips label={"Figma"} languagetype={"figma"} />}
+          {<LanguageChips label={"Firebase"} languagetype={"firebase"} />}
+          {<LanguageChips label={"Flutter"} languagetype={"flutter"} />}
+          {<LanguageChips label={"Git"} languagetype={"git"} />}
+          {<LanguageChips label={"Go"} languagetype={"go"} />}
+          {<LanguageChips label={"Graphql"} languagetype={"graphql"} />}
+          {<LanguageChips label={"Java"} languagetype={"java"} />}
+          {<LanguageChips label={"JavaScript"} languagetype={"javascript"} />}
+          {<LanguageChips label={"Kotlin"} languagetype={"kotlin"} />}
+          {<LanguageChips label={"Kubernetes"} languagetype={"kubernetes"} />}
+          {<LanguageChips label={"Mongodb"} languagetype={"mongodb"} />}
+          {<LanguageChips label={"Mysql"} languagetype={"mysql"} />}
+          {<LanguageChips label={"Nestjs"} languagetype={"nestjs"} />}
+          {<LanguageChips label={"Nextjs"} languagetype={"nextjs"} />}
+          {<LanguageChips label={"Nodejs"} languagetype={"nodejs"} />}
+          {<LanguageChips label={"PHP"} languagetype={"php"} />}
+          {<LanguageChips label={"Python"} languagetype={"python"} />}
+          {<LanguageChips label={"React"} languagetype={"react"} />}
+          {<LanguageChips label={"Reactnative"} languagetype={"reactnative"} />}
+          {<LanguageChips label={"Spring"} languagetype={"spring"} />}
+          {<LanguageChips label={"Svelte"} languagetype={"svelte"} />}
+          {<LanguageChips label={"Swift"} languagetype={"swift"} />}
+          {<LanguageChips label={"TypeScript"} languagetype={"typescript"} />}
+          {<LanguageChips label={"Unity"} languagetype={"unity"} />}
+          {<LanguageChips label={"Vue"} languagetype={"vue"} />}
+          {<LanguageChips label={"Zeplin"} languagetype={"zeplin"} />}
+          {<LanguageChips label={"Zest"} languagetype={"zest"} />}
+
+          {<LocateChips label={"서울"} />}
+        </Stack>
         {Array.from(subCategories).map((e) => {
           return (
             <TabPanel value={e[0]}>

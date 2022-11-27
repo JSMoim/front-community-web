@@ -133,7 +133,6 @@ function QnaPage() {
                 alignItems="center"
               >
                 {createBoard(e[1])}
-                {<LanguageChips label={"GitHub"} languagetype={"javascript"} />}
               </Grid>
             </TabPanel>
           );

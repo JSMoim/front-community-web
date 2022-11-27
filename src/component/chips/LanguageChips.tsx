@@ -15,7 +15,7 @@ export type LanguageChipsProps = {
     | "swift"
     | "unity"
     | "git"
-    | "jest"
+    | "zest"
     | "javascript"
     | "typescript"
     | "react"
@@ -49,16 +49,18 @@ function LanguageChips(props: LanguageChipsProps) {
 
   return (
     <div>
-      <Chip   
-        sx={{ fontSize: "20px", height: ""  }}
-        icon={ 
-          <img style={{objectFit:"contain",margin:"10px"}}
-          src={"/src/assets/iconsvg/" + props.languagetype + ".svg"} />
+      <Chip
+        sx={{ fontSize: "17px", fontWeight: "bold", height: "" }}
+        icon={
+          <img
+            style={{ objectFit: "contain", margin: "10px" }}
+            src={"/src/assets/iconsvg/" + props.languagetype + ".svg"}
+          />
         }
         label={props.label}
         variant="outlined"
         onClick={handleClick}
-        size="medium"
+        size="small"
       />
     </div>
   );
