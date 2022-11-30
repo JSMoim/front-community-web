@@ -24,6 +24,7 @@ import {
   Chip,
   Link as MuiLink,
   Avatar,
+  FormControlLabel,
 } from "@mui/material";
 import React from "react";
 import { DefaultTheme } from "./themes/DefaultThemes";
@@ -34,6 +35,7 @@ import GithubIcon from "./assets/GithubIcon";
 import GoogleIcon from "./assets/GoogleIcon";
 import AltTextField from "./component/AltTextField";
 import { PaddingOutlined } from "@mui/icons-material";
+import DarkMode from "@/assets/DarkMode";
 
 function App() {
   const [value, setValue] = React.useState(0);
@@ -103,13 +105,13 @@ function App() {
                   alignItems: "center",
                 }}
               >
+                {DarkMode()}
                 <Button
                   sx={{ paddingLeft: "16px", paddingRight: "16px" }}
                   onClick={handleClickOpen}
                 >
                   로그인
                 </Button>
-
                 <Avatar src="assets/unnamed.png" />
               </Stack>
 

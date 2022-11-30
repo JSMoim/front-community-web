@@ -1,10 +1,14 @@
 import { Style } from "@mui/icons-material";
+
 import { Chip, Avatar, createSvgIcon, SvgIcon } from "@mui/material";
+
 import { width } from "@mui/system";
-import React from "react";
+
+import React, { useState } from "react";
 
 export type LanguageChipsProps = {
   label: string;
+
   languagetype:
     | "graphql"
     | "kotlin"
@@ -43,17 +47,25 @@ export type LanguageChipsProps = {
 };
 
 function LanguageChips(props: LanguageChipsProps) {
+  const [chipOpacity, setOpacity] = useState("0.25");
+
   const handleClick = () => {
-    console.info("you clicked tho Chip.");
+    if (chipOpacity == "0.5") {
+      setOpacity("1");
+    } else {
+      setOpacity("0.5");
+    }
+
+    console.log(chipOpacity);
   };
 
   return (
     <div>
       <Chip
-        sx={{ fontSize: "17px", fontWeight: "bold", height: "" }}
+        sx={{ fontSize: "17px", height: "", opacity: chipOpacity }}
         icon={
           <img
-            style={{ objectFit: "contain", margin: "10px" }}
+            style={{ objectFit: "contain", margin: "5px", height: "30px" }}
             src={"/src/assets/iconsvg/" + props.languagetype + ".svg"}
           />
         }
