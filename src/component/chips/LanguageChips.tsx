@@ -47,7 +47,7 @@ export type LanguageChipsProps = {
 };
 
 function LanguageChips(props: LanguageChipsProps) {
-  const [chipOpacity, setOpacity] = useState("0.25");
+  const [chipOpacity, setOpacity] = useState("0.5");
 
   const handleClick = () => {
     if (chipOpacity == "0.5") {

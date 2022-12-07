@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Grid,
@@ -113,9 +114,22 @@ function QnaPage() {
             justifyContent={"center"}
             alignItems={"center"}
             spacing={2}
+            paddingTop="20px"
             sx={{ flexGrow: 1, overflow: "hidden" }}
           >
-            <TabList value={value} onChange={handleChange}>
+            <Button variant="outlined">글 작성</Button>
+            <TabList
+              value={value}
+              onChange={handleChange}
+              centered
+              sx={{
+                direction: "row",
+                minWidth: "700px",
+            
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
               <Tab label="기술" value={"tech"} />
               <Tab label="커리어" value={"career"} />
               <Tab label="기타" value={"etc"} />

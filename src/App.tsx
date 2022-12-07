@@ -172,6 +172,33 @@ function App() {
                       placeholder=""
                       fieldtype="PW"
                     />
+                    {!inRegist ? (
+                      ""
+                    ) : (
+                      <>
+                        <AltTextField
+                          errorMsg="유효하지 않은 이메일 형식입니다."
+                          label="이메일"
+                          placeholder=""
+                          fieldtype="EMAIL"
+                          sx={{ width: "240px" }}
+                        />
+                        <AltTextField
+                          errorMsg=""
+                          label="이름"
+                          placeholder=""
+                          fieldtype="NAME"
+                          sx={{ width: "240px" }}
+                        />
+                        <AltTextField
+                          errorMsg="별명을 알파벳,한글,숫자를 15자 이하로 입력해주세요."
+                          label="닉네임"
+                          placeholder=""
+                          fieldtype="NICKNAME"
+                          sx={{ width: "240px" }}
+                        />
+                      </>
+                    )}
                     <Button
                       sx={{
                         width: "240px",
@@ -179,8 +206,9 @@ function App() {
                       style={{ margin: "4px" }}
                       variant="contained"
                     >
-                      로그인
+                      {inRegist ? "회원가입" : "로그인"}
                     </Button>
+
                     {inRegist ? (
                       <Stack
                         direction={"row"}
