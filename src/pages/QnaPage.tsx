@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   Grid,
-  Link,
   List,
   ListItemButton,
   ListItemIcon,
@@ -22,6 +21,8 @@ import { TabContext, TabPanel } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import LanguageChips from "@/component/chips/LanguageChips";
 import AvatarSvg from "assets/iconsvg/GiyHub.svg";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import NewPostPage from "@/pages/NewPostPage";
 
 export type BoardProps = {
   title: string;
@@ -32,19 +33,8 @@ export type BoardProps = {
 let boards: BoardProps[] = [
   {
     title: "게시글 1",
-    contents: "내용 1",
-    avatar: "😀",
-  },
-
-  {
-    title: "게시글 2",
-    contents: "내용 2",
-    avatar: "😀",
-  },
-
-  {
-    title: "게시글 3",
-    contents: "내용 3",
+    contents:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
     avatar: "😀",
   },
 ];
@@ -72,9 +62,18 @@ function createBoard(subCategory: String) {
                 {boards.map((v, i) => {
                   return (
                     <ListItemButton>
-                      <ListItemIcon>{v.avatar}</ListItemIcon>
-                      <ListItemText>{v.title}</ListItemText>
-                      <ListItemText>{v.contents}</ListItemText>
+                      <Stack
+                        sx={{
+                          direction: "column",
+                          justifyItems: "center",
+                          justifyContents: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <ListItemIcon>{v.avatar}</ListItemIcon>
+                        <ListItemText>{v.title}</ListItemText>
+                        <ListItemText>{v.contents}</ListItemText>
+                      </Stack>
                     </ListItemButton>
                   );
                 })}
@@ -102,56 +101,62 @@ function QnaPage() {
   ]);
   return (
     <div>
-      <TabContext value={value}>
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            display: "flex",
-          }}
-        >
-          <Stack
-            direction="row"
-            justifyContent={"center"}
-            alignItems={"center"}
-            spacing={2}
-            paddingTop="20px"
-            sx={{ flexGrow: 1, overflow: "hidden" }}
+    
+        <TabContext value={value}>
+          <Box
+            sx={{
+              bgcolor: "background.paper",
+              display: "flex",
+            }}
           >
-            <Button variant="outlined">글 작성</Button>
-            <TabList
-              value={value}
-              onChange={handleChange}
-              centered
-              sx={{
-                direction: "row",
-                minWidth: "700px",
-            
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
+            <Stack
+              direction="row"
+              justifyContent={"center"}
+              alignItems={"center"}
+              spacing={2}
+              paddingTop="20px"
+              sx={{ flexGrow: 1, overflow: "hidden" }}
             >
-              <Tab label="기술" value={"tech"} />
-              <Tab label="커리어" value={"career"} />
-              <Tab label="기타" value={"etc"} />
-              <Tab label="전체" value={"all"} />
-            </TabList>
-          </Stack>
-        </Box>
-        {Array.from(subCategories).map((e) => {
-          return (
-            <TabPanel value={e[0]}>
-              <Grid
-                container
-                direction={"row"}
-                justifyContent="center"
-                alignItems="center"
+              <Button to="/newpost" component={Link} variant="outlined">
+                글 작성
+              </Button>
+              <TabList
+                value={value}
+                onChange={handleChange}
+                centered
+                sx={{
+                  direction: "row",
+                  minWidth: "700px",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
               >
-                {createBoard(e[1])}
-              </Grid>
-            </TabPanel>
-          );
-        })}
-      </TabContext>
+                <Tab label="기술" value={"tech"} />
+                <Tab label="커리어" value={"career"} />
+                <Tab label="기타" value={"etc"} />
+                <Tab label="전체" value={"all"} />
+              </TabList>
+            </Stack>
+          </Box>
+          {Array.from(subCategories).map((e) => {
+            return (
+              <TabPanel value={e[0]}>
+                <Grid
+                  container
+                  direction={"row"}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {createBoard(e[1])}
+                </Grid>
+              </TabPanel>
+            );
+          })}
+        </TabContext>
+        <Routes>
+          <Route path="/newpost" element={<NewPostPage />} />
+        </Routes>
+   
     </div>
   );
 }
