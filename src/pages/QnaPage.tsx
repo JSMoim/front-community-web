@@ -12,6 +12,8 @@ import {
   Tab,
   Tabs,
   Typography,
+  Link as Muilink,
+  ButtonGroup,
 } from "@mui/material";
 import React from "react";
 import ImageIcon from "@mui/icons-material/Image";
@@ -23,6 +25,8 @@ import LanguageChips from "@/component/chips/LanguageChips";
 import AvatarSvg from "assets/iconsvg/GiyHub.svg";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import NewPostPage from "@/pages/NewPostPage";
+import { SettingsInputComponent } from "@mui/icons-material";
+import NoticePage from "./NoticePage";
 
 export type BoardProps = {
   title: string;
@@ -93,6 +97,8 @@ function QnaPage() {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+ 
   let subCategories: Map<string, string> = new Map([
     ["tech", "Tech"],
     ["career", "Career"],
@@ -101,62 +107,58 @@ function QnaPage() {
   ]);
   return (
     <div>
-    
-        <TabContext value={value}>
-          <Box
-            sx={{
-              bgcolor: "background.paper",
-              display: "flex",
-            }}
+      <TabContext value={value}>
+        <Box
+          sx={{
+            bgcolor: "background.paper",
+            display: "flex",
+          }}
+        >
+          <Stack
+            direction="row"
+            justifyContent={"center"}
+            alignItems={"center"}
+            spacing={2}
+            paddingTop="20px"
+            sx={{ flexGrow: 1, overflow: "hidden" }}
           >
-            <Stack
-              direction="row"
-              justifyContent={"center"}
-              alignItems={"center"}
-              spacing={2}
-              paddingTop="20px"
-              sx={{ flexGrow: 1, overflow: "hidden" }}
+            <Button to="/newpost" component={Link} variant="outlined">
+              글 작성
+            </Button>
+
+            <TabList
+              value={value}
+              onChange={handleChange}
+              centered
+              sx={{
+                direction: "row",
+                minWidth: "700px",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
             >
-              <Button to="/newpost" component={Link} variant="outlined">
-                글 작성
-              </Button>
-              <TabList
-                value={value}
-                onChange={handleChange}
-                centered
-                sx={{
-                  direction: "row",
-                  minWidth: "700px",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
+              <Tab label="기술" value={"tech"} />
+              <Tab label="커리어" value={"career"} />
+              <Tab label="기타" value={"etc"} />
+              <Tab label="전체" value={"all"} />
+            </TabList>
+          </Stack>
+        </Box>
+        {Array.from(subCategories).map((e) => {
+          return (
+            <TabPanel value={e[0]}>
+              <Grid
+                container
+                direction={"row"}
+                justifyContent="center"
+                alignItems="center"
               >
-                <Tab label="기술" value={"tech"} />
-                <Tab label="커리어" value={"career"} />
-                <Tab label="기타" value={"etc"} />
-                <Tab label="전체" value={"all"} />
-              </TabList>
-            </Stack>
-          </Box>
-          {Array.from(subCategories).map((e) => {
-            return (
-              <TabPanel value={e[0]}>
-                <Grid
-                  container
-                  direction={"row"}
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  {createBoard(e[1])}
-                </Grid>
-              </TabPanel>
-            );
-          })}
-        </TabContext>
-        <Routes>
-          <Route path="/newpost" element={<NewPostPage />} />
-        </Routes>
-   
+                {createBoard(e[1])}
+              </Grid>
+            </TabPanel>
+          );
+        })}
+      </TabContext>
     </div>
   );
 }

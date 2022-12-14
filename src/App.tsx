@@ -36,6 +36,7 @@ import GoogleIcon from "./assets/GoogleIcon";
 import AltTextField from "./component/AltTextField";
 import { PaddingOutlined } from "@mui/icons-material";
 import DarkMode from "@/assets/DarkMode";
+import NewPostPage from "./pages/NewPostPage";
 
 function App() {
   const [value, setValue] = React.useState(0);
@@ -279,6 +280,7 @@ function App() {
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/notice" element={<NoticePage />} />
               <Route path="/recruit" element={<RecruitPage />} />
+              <Route path="/newpost" element={<NewPostPage/>} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
